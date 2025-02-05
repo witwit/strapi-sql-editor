@@ -3,7 +3,7 @@ import { PLUGIN_ID } from '../../admin/src/pluginId';
 
 const register = ({ strapi }: { strapi: Core.Strapi }) => {
   strapi.customFields.register({
-    name: 'monaco-editor-text',
+    name: 'sql-editor-text',
     plugin: PLUGIN_ID,
     type: 'text',
     inputSize: {

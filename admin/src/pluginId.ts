@@ -1,1 +1,1 @@
-export const PLUGIN_ID = 'monaco-editor';
+export const PLUGIN_ID = 'sql-editor';

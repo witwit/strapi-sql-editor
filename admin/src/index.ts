@@ -2,23 +2,19 @@ import { PLUGIN_ID } from './pluginId';
 import { Initializer } from './components/Initializer';
 import fieldOptions from './components/fieldOptions';
 
-const name = 'monaco-editor'; // pluginPkg.strapi.name;
-
-//https://docs.strapi.io/dev-docs/custom-fields
 export default {
   register(app: any) {
     app.customFields.register({
-      name: 'monaco-editor-text',
+      name: 'sql-editor-text',
       pluginId: PLUGIN_ID,
       type: 'text',
-      // icon: Code,
       intlLabel: {
-        id: 'monaco.field.label',
-        defaultMessage: 'Monaco Editor',
+        id: 'sqleditor.field.label',
+        defaultMessage: 'SQL Editor',
       },
       intlDescription: {
-        id: 'monaco.field.description',
-        defaultMessage: 'code with style',
+        id: 'sqleditor.field.description',
+        defaultMessage: 'edit SQL queries',
       },
       components: {
         Input: async () => await import('./components/MonacoField'),
@@ -28,10 +24,9 @@ export default {
 
     app.registerPlugin({
       id: PLUGIN_ID,
-      pluginId: PLUGIN_ID,
       initializer: Initializer,
       isReady: false,
-      name: PLUGIN_ID,
+      name: 'SQL Editor',
     });
   },
 

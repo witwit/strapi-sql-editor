@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { type FieldValue, type InputProps } from '@strapi/strapi/admin';
 import { editor } from 'monaco-editor';
+import { LanguageIdEnum, setupLanguageFeatures } from 'monaco-sql-languages';
 import { debounce } from 'lodash';
 import { Box, Field } from '@strapi/design-system';
-// import IStandaloneEditorConstructionOptions = monaco.editor.IStandaloneEditorConstructionOptions;
 
 type MonacoFieldProps = InputProps &
   FieldValue & {
@@ -21,15 +21,21 @@ type MonacoFieldProps = InputProps &
 
 const MonacoField = (props: MonacoFieldProps) => {
   const { disabled, name, onChange, value, attribute } = props;
-  const fieldId = `monaco-field-${name}`;
+  const sanitizedFieldId = `monaco-field-${name.replace(/[^a-zA-Z0-9-_]/g, '-')}`;
   const options = attribute.options;
-  // console.log(`${name} options`, options);
 
   useEffect(() => {
-    const element = document.querySelector(`#${fieldId}`)! as HTMLElement;
+    setupLanguageFeatures(LanguageIdEnum.PG, {
+      completionItems: {
+        enable: true,
+        triggerCharacters: [' ', '.'],
+      },
+    });
+
+    const element = document.querySelector(`#${sanitizedFieldId}`)! as HTMLElement;
     const editorOptions: any = {
       value: value,
-      language: options.language || 'html',
+      language: LanguageIdEnum.PG,
       automaticLayout: true,
       readOnly: disabled,
       minimap: { enabled: options.minimap },
@@ -47,7 +53,9 @@ const MonacoField = (props: MonacoFieldProps) => {
 
     editorInstance.onDidChangeModelContent(handleChange);
 
-    return editorInstance.dispose;
+    return () => {
+      editorInstance.dispose();
+    };
   }, []);
 
   const height = `${options.height || 300}px`;
@@ -64,7 +72,7 @@ const MonacoField = (props: MonacoFieldProps) => {
     <Field.Root required={options.required} disabled={disabled}>
       <Field.Label>{name}</Field.Label>
       <Box padding={4} hasRadius={true} style={style}>
-        <div id={fieldId} className={'monaco-field-editor'} style={{ height }}></div>
+        <div id={sanitizedFieldId} className={'monaco-field-editor'} style={{ height }}></div>
       </Box>
     </Field.Root>
   );

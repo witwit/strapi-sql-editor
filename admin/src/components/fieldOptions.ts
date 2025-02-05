@@ -1,68 +1,25 @@
-// import { number } from 'yup';
-
 export default {
   base: [
-    {
-      intlLabel: {
-        id: 'monaco.field.language',
-        defaultMessage: 'Language',
-      },
-      name: 'options.language',
-      type: 'select',
-      defaultValue: 'plainText',
-      options: [
-        {
-          key: 'plainText',
-          value: 'plainText',
-          metadatas: {
-            intlLabel: {
-              id: 'monaco.field.languages.plainText',
-              defaultMessage: 'Plain Text',
-            },
-          },
-        },
-        {
-          key: 'html',
-          value: 'html',
-          metadatas: {
-            intlLabel: {
-              id: 'monaco.field.languages.html',
-              defaultMessage: 'html',
-            },
-          },
-        },
-        {
-          key: 'css',
-          value: 'css',
-          metadatas: {
-            intlLabel: {
-              id: 'monaco.field.languages.css',
-              defaultMessage: 'css',
-            },
-          },
-        },
-      ],
-    },
     {
       name: 'options.required',
       type: 'checkbox',
       intlLabel: {
-        id: 'monaco.field.minimap.required.label',
+        id: 'sqleditor.field.minimap.required.label',
         defaultMessage: 'Required field',
       },
       description: {
-        id: 'monaco.field.minimap.required.description',
+        id: 'sqleditor.field.minimap.required.description',
         defaultMessage: "You won't be able to create an entry if this field is empty",
       },
     },
     {
       intlLabel: {
-        id: 'monaco.field.minimap.label',
+        id: 'sqleditor.field.minimap.label',
         defaultMessage: 'Minimap',
       },
       name: 'options.minimap',
       description: {
-        id: 'monaco.field.minimap.description',
+        id: 'sqleditor.field.minimap.description',
         defaultMessage: 'Show minimap when edit',
       },
       type: 'checkbox',
@@ -70,11 +27,11 @@ export default {
     },
     {
       intlLabel: {
-        id: 'monaco.field.lineNumbers.label',
+        id: 'sqleditor.field.lineNumbers.label',
         defaultMessage: 'Line numbers',
       },
       description: {
-        id: 'monaco.field.lineNumbers.description',
+        id: 'sqleditor.field.lineNumbers.description',
         defaultMessage: 'Show line numbers',
       },
       name: 'options.lineNumbers',
@@ -83,12 +40,12 @@ export default {
     },
     {
       intlLabel: {
-        id: 'monaco.field.folding.label',
+        id: 'sqleditor.field.folding.label',
         defaultMessage: 'Folding',
       },
       name: 'options.folding',
       description: {
-        id: 'monaco.field.folding.description',
+        id: 'sqleditor.field.folding.description',
         defaultMessage: 'Enable code folding',
       },
       type: 'checkbox',
@@ -98,12 +55,12 @@ export default {
   advanced: [
     {
       intlLabel: {
-        id: 'monaco.field.height.label',
+        id: 'sqleditor.field.height.label',
         defaultMessage: 'Height',
       },
       name: 'options.height',
       description: {
-        id: 'monaco.field.height.description',
+        id: 'sqleditor.field.height.description',
         defaultMessage: 'Height of the editor in pixels',
       },
       type: 'number',
