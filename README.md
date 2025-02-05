@@ -1,4 +1,4 @@
-# Monaco Field Editor
+# SQL Field Editor
 
 ## Installation
 
