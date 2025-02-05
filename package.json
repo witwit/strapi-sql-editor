@@ -1,6 +1,6 @@
 {
   "name": "strapi-sql-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Monaco SQL editor as strapi custom field",
   "license": "MIT",
   "type": "commonjs",
